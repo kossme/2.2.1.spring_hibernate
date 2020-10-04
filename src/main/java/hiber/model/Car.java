@@ -22,10 +22,20 @@ public class Car {
     @MapsId
     private User user;
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Car() {
     }
 
-    public Car(String model, int series) {
+    public Car(String model, int series, User user) {
+        user.setCar(this);
+        setUser(user);
         this.model = model;
         this.series = series;
     }
@@ -52,6 +62,15 @@ public class Car {
 
     public void setSeries(int series) {
         this.series = series;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", model='" + model + '\'' +
+                ", series=" + series +
+                '}';
     }
 }
 

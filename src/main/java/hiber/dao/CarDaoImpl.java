@@ -30,13 +30,5 @@ public class CarDaoImpl implements CarDao {
         return query.getResultList();
     }
 
-    public void createCarsTable() {
-        Session session = sessionFactory.getCurrentSession();
-        Transaction transaction = session.beginTransaction();
-        session.createNativeQuery("CREATE table if not exists Cars (id bigint primary key , model varchar(30), series int)\n").executeUpdate();
-        transaction.commit();
-        session.close();
-    }
-
 }
 

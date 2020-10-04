@@ -25,21 +25,23 @@ public class MainApp {
       userService.add(new User("User4", "Lastname4", "user4@mail.ru"));
 
       CarService carService = context.getBean(CarService.class);
-      carService.createCarsTable();
 
-      carService.add((new Car("Lada",2105)));
-      carService.add((new Car("Lada",2107)));
-      carService.add((new Car("Mercedes",900)));
-      carService.add((new Car("BMW",525)));
+      carService.add((new Car("Lada",2105, userService.listUsers().get(0))));
+      carService.add((new Car("Lada",2107, userService.listUsers().get(1))));
+      carService.add((new Car("Mercedes",900, userService.listUsers().get(2))));
+      carService.add((new Car("BMW",525, userService.listUsers().get(3))));
 
-      List<User> users = userService.listUsers();
+ /*     List<User> users = userService.listUsers();
       for (User user : users) {
          System.out.println("Id = "+user.getId());
          System.out.println("First Name = "+user.getFirstName());
          System.out.println("Last Name = "+user.getLastName());
          System.out.println("Email = "+user.getEmail());
+         System.out.println("Car = " + user.getCar());
          System.out.println();
-      }
+      }*/
+
+      System.out.println(userService.getUserByCar("Lada", 2107));
 
       context.close();
    }

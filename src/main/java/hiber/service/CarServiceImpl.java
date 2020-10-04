@@ -17,6 +17,7 @@ public class CarServiceImpl implements CarService {
     @Autowired
     private CarDao carDao;
 
+    @Transactional
     @Override
     public void add(Car car) {
         carDao.add(car);
@@ -27,12 +28,5 @@ public class CarServiceImpl implements CarService {
     public List<Car> listCars() {
         return carDao.listCars();
     }
-
-    @Override
-    public void createCarsTable() {
-        carDao.createCarsTable();
-    }
-
-
 }
 
